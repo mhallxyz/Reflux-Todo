@@ -6,7 +6,8 @@ export default class TodoStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      todos: []
+      todos: [],
+      editable: {}
     }
     this.listenToMany(TodosActions);
   }
@@ -19,6 +20,14 @@ export default class TodoStore extends Reflux.Store {
     })
     this.setState({
       todos: temp,
+    })
+  }
+
+  getTodoById = id => {
+    let editable = {};
+    editable = this.state.todos.filter(todo => todo.id === parseInt(id));
+    this.setState({
+      editable: editable[0]
     })
   }
 
@@ -40,12 +49,12 @@ export default class TodoStore extends Reflux.Store {
   }
 
   editTodo = todo => {
-    let temp = this.state.todos;
+    let temp = this.state.editable;
     console.log(todo)
     this.setState({
       todos: temp,
     })
-    console.log(this.state.todos);
+    console.log(this.state.editable);
   }
 
 }

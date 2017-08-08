@@ -5,7 +5,8 @@ const TodosActions = Reflux.createActions(
     'getTodos',
     'addTodoToTodo',
     'deleteTodo',
-    'editTodo'
+    'editTodo',
+    'getTodoById'
   ]
 );
 export default TodosActions;
