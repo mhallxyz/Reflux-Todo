@@ -30,4 +30,22 @@ export default class TodoStore extends Reflux.Store {
     })
   }
 
+  deleteTodo = todo => {
+    let temp = this.state.todos;
+    temp.splice(temp.indexOf(todo), 1);
+    this.setState({
+      todos: temp,
+    })
+    console.log(this.state.todos);
+  }
+
+  editTodo = todo => {
+    let temp = this.state.todos;
+    console.log(todo)
+    this.setState({
+      todos: temp,
+    })
+    console.log(this.state.todos);
+  }
+
 }

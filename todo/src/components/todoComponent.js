@@ -1,14 +1,22 @@
 import React from 'react';
 import Reflux from 'reflux';
+import TodoActions from '../stores/todo.actions';
+import uuid from 'uuid/v1';
 import moment from 'moment';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 export default class TodoComponent extends Reflux.Component {
   constructor(props) {
     super(props);
   }
   
-  deleteTodo = event => {
-
+  deleteTodo = data => {
+    TodoActions.deleteTodo(data);
+    console.log(data);
   }
 
   render() {
@@ -28,8 +36,9 @@ export default class TodoComponent extends Reflux.Component {
         <p>{data.description}</p>
         <p>{moment(data.due).format('DO MMM YYY')}</p>
         <p>{data.isDone ? 'DONE' : 'GET ON IT'}</p>
+        <Link to={"/edit/" + data.id}><button>Edit Todo </button></Link>
         <button
-          onClick={event => this.deleteTodo(event)}
+          onClick={() => this.deleteTodo(data)}
         >Delete Todo </button>
       </div>
     );
