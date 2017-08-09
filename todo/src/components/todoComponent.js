@@ -34,7 +34,7 @@ export default class TodoComponent extends Reflux.Component {
       <div style={styles.TodoDiv}>
         <h1>{data.title}</h1>
         <p>{data.description}</p>
-        <p>{moment(data.due).format('DO MMM YYY')}</p>
+        <p>{moment(data.due).format('DD MMM YYYY')}</p>
         <p>{data.isDone ? 'DONE' : 'GET ON IT'}</p>
         <Link to={"/edit/" + data.id}><button>Edit Todo </button></Link>
         <button

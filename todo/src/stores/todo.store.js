@@ -49,7 +49,7 @@ export default class TodoStore extends Reflux.Store {
   }
 
   editTodo = todo => {
-    let temp = this.state.editable;
+    let temp = [this.state.editable];
     console.log(todo)
     this.setState({
       todos: temp,
